@@ -98,7 +98,7 @@
       
       html,
       body {
-        background: #292929;
+        background: #F6F7F9 /*#292929*/;
         border: 0;
         font-family: "Roboto Mono", monospace;
         height: 100%;
