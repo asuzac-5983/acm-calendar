@@ -1741,7 +1741,7 @@ h2 {
 
 #weather {
   position: absolute;
-  top: calc(45% - 90px);
+  top: calc(35% - 75px);
   left: calc(20% - 100px);
 }
 
