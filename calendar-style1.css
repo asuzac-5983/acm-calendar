@@ -1763,15 +1763,7 @@
         font-size: 20px;
       }
 
-      .cityName {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        position: absolute;
-        top: 15%;
-        left: 35%;
-        color: #FFCC00;
-        font-size: 20px;
-      }
+
       
       .bars {
         opacity: 0;
