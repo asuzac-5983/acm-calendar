@@ -1772,14 +1772,14 @@ h2 {
 }
 
 .cityName {
-  top: 55%;
-  left: 20%;
+  /*top: 55%;
+  left: 20%;*/
   color: #ffcc00;
   font-size: 20px;
 }
 
 .location{
-  margin-top:63%; 
+  margin-top:68%; 
   text-align:center
 }
 
