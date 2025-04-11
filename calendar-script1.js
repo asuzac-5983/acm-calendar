@@ -147,4 +147,33 @@ $(function() {
 	}
 
 	init();
-});
+	
+	const cityName = document.querySelector("#cityName");
+	const Temp = document.querySelector("#temp");
+		
+	input.onsubmit = (e) => {
+	  e.preventDefault();
+	  weatherUpdate(city.value);
+	  city.value = "";
+	};
+	
+	weatherUpdate = (city) => {
+	  const xhr = new XMLHttpRequest();
+	  xhr.open(
+	    "GET",
+	    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cad7ec124945dcfff04e457e76760d90`);
+	
+	  xhr.send();
+	  xhr.onload = () => {
+	    if (xhr.status === 404) {
+	      alert("Place not found");
+	    } else {
+	      var data = JSON.parse(xhr.response);
+	      cityName.innerHTML = data.name;
+	      Temp.innerHTML = `${Math.round(data.main.temp - 273.15)}°C`;
+	    }
+	  };
+	};
+	
+	weatherUpdate("Binh Duong");
+	});
