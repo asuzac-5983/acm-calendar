@@ -12,7 +12,15 @@ $(function () {
     charactersMonth = 3,
     dayColor = "#FF2D55",
     monthColor = "#007AFF",
-    dayNameColor = "#4CD964"
+    dayNameColor = "#4CD964",
+    city_Name = "",
+    ip = ""
+  $.getJSON("https://api.country.is/", function (data) {
+    ip = data.ip
+  })
+  $.getJSON("https://freeipapi.com/api/json/" + ip, function (data) {
+    city_Name = data.cityName
+  })
 
   function weatherUpdate(city) {
     const xhr = new XMLHttpRequest()
@@ -27,13 +35,13 @@ $(function () {
         alert("Place not found")
       } else {
         var data = JSON.parse(xhr.response)
-        cityName.innerHTML = data.name
+        cityName.innerHTML = city_Name
         Temp.innerHTML = `${Math.round(data.main.temp - 273.15)}°C`
       }
     }
   }
 
-  weatherUpdate("Binh Duong")
+  weatherUpdate(city_Name)
 
   // Rotate the selected ring the correct amount and illuminate the correct characters of the ring text
   function rotateRing(input, sections, characters, ring, text, color) {
