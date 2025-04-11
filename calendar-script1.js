@@ -1,12 +1,8 @@
-/*
- * Cirulcar Calendar Display.js
- * Matthew Juggins
- * Change log:
- * 		25/09/16 - Quick fix to day of the week
- */
 
 $(function() {
-
+  const cityName = document.querySelector("#cityName");
+  const Temp = document.querySelector("#temp");
+  
 	var date, dayName, day, month, year;
 	var range = 270,
 		sectionsDayName = 7,
@@ -18,8 +14,28 @@ $(function() {
 		dayColor = '#FF2D55',
 		monthColor = '#007AFF',
 		dayNameColor = '#4CD964';
-	
+    
+  function weatherUpdate(city) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cad7ec124945dcfff04e457e76760d90`);
 
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 404) {
+        alert("Place not found");
+      } else {
+        var data = JSON.parse(xhr.response);
+        cityName.innerHTML = data.name;
+        Temp.innerHTML = `${Math.round(data.main.temp - 273.15)}°C`;
+      
+      }
+    }
+  }
+
+  weatherUpdate("Binh Duong");
+	
 	// Rotate the selected ring the correct amount and illuminate the correct characters of the ring text
 	function rotateRing(input, sections, characters, ring, text, color) {
 		var sectionWidth = range / sections;
@@ -145,6 +161,7 @@ $(function() {
 		// Begin clock rotation now it is visible
 		clockRotation();
 	}
-
+  
 	init();
+  
 });
