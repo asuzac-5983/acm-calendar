@@ -1765,21 +1765,21 @@ h2 {
   opacity: 0;
   filter: alpha(opacity=0);
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 55%;
   color: #ffcc00;
   font-size: 20px;
 }
 
 .cityName {
-  top: 60%;
+  top: 57%;
   left: 20%;
   color: #ffcc00;
   font-size: 20px;
 }
 
 .location{
-  margin-top:68%; 
+  margin-top:66%; 
   text-align:center
 }
 
