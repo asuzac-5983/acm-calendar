@@ -15,11 +15,14 @@ $(function () {
     dayNameColor = "#4CD964",
     city_Name = "",
     ip = ""
+  
+  //get current IP => get temperature + city of this IP location
   $.getJSON("https://api.country.is/", function (data) {
     ip = data.ip
-  })
-  $.getJSON("https://freeipapi.com/api/json/" + ip, function (data) {
-    city_Name = data.cityName
+    $.getJSON("https://freeipapi.com/api/json/" + ip, function (data) {
+      city_Name = data.cityName
+      weatherUpdate(city_Name)
+    })
   })
 
   function weatherUpdate(city) {
@@ -40,8 +43,6 @@ $(function () {
       }
     }
   }
-
-  weatherUpdate(city_Name)
 
   // Rotate the selected ring the correct amount and illuminate the correct characters of the ring text
   function rotateRing(input, sections, characters, ring, text, color) {
